@@ -10,9 +10,13 @@ export const BooksList = ({ books, fetchBooks, showAll }) => {
         return books.map((book) => (
             <div
             key={`key-${book.id}`}
-            className="border p-10 border-solid border-blue-900 bg-slate-500"
+            className="border p-10 m-5 border-solid border-blue-900 bg-slate-500"
             >
                 <div>{book.title}</div>
+                <div>{book.author}</div>
+                <div>{book.isbn_number}</div>
+                <img src={book.cover_image} alt="book cover art" />
+                <div>Categories: {book.categories.map((category) => category.name).join(', ')}</div>
             </div>
         ))
     }

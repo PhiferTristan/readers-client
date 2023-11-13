@@ -5,6 +5,7 @@ import { Register } from "../pages/Register";
 import { Authorized } from "./Authorized";
 import { useState } from "react";
 import { BooksList } from "./BooksList";
+import { BookForm } from "./BookForm";
 
 export default function ApplicationViews() {
   const [booksState, setBooksState] = useState([]);
@@ -43,6 +44,7 @@ export default function ApplicationViews() {
               />
             }
           />
+          <Route path="/createbook" element={<BookForm />} />
         </Route>
       </Routes>
     </BrowserRouter>
