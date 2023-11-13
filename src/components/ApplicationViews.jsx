@@ -3,8 +3,29 @@ import { Home } from "../pages/Home";
 import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
 import { Authorized } from "./Authorized";
+import { useState } from "react";
+import { BooksList } from "./BooksList";
 
 export default function ApplicationViews() {
+  const [booksState, setBooksState] = useState([]);
+
+  const fetchBooksFromAPI = async (showAll) => {
+    let url = "http://localhost:8000/books";
+
+    if (showAll !== true) {
+      url = "http://localhost:8000/books?owner=current";
+    }
+    const response = await fetch(url, {
+      headers: {
+        Authorization: `Token ${
+          JSON.parse(localStorage.getItem("reader_token")).token
+        }`,
+      },
+    });
+    const books = await response.json();
+    setBooksState(books);
+  };
+
   return (
     <BrowserRouter>
       <Routes>
@@ -12,6 +33,16 @@ export default function ApplicationViews() {
         <Route path="/register" element={<Register />} />
         <Route element={<Authorized />}>
           <Route path="/" element={<Home />} />
+          <Route
+            path="/books"
+            element={
+              <BooksList
+                books={booksState}
+                fetchBooks={fetchBooksFromAPI}
+                showAll={true}
+              />
+            }
+          />
         </Route>
       </Routes>
     </BrowserRouter>
