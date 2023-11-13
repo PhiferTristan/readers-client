@@ -29,6 +29,7 @@ export default function ApplicationViews() {
 
   return (
     <BrowserRouter>
+    <div className="bg-gradient-to-b from-gray-800">
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -44,9 +45,10 @@ export default function ApplicationViews() {
               />
             }
           />
-          <Route path="/createbook" element={<BookForm />} />
+          <Route path="/create_book" element={<BookForm />} />
         </Route>
       </Routes>
+      </div>
     </BrowserRouter>
   );
 }

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 export const BooksList = ({ books, fetchBooks, showAll }) => {
   useEffect(() => {
@@ -7,25 +8,42 @@ export const BooksList = ({ books, fetchBooks, showAll }) => {
 
   const displayBooks = () => {
     if (books && books.length) {
-        return books.map((book) => (
+      return (
+        <div className="flex flex-wrap justify-center">
+          {books.map((book) => (
             <div
-            key={`key-${book.id}`}
-            className="border p-10 m-5 border-solid border-blue-900 bg-slate-500"
+              key={`key-${book.id}`}
+              className="border p-10 m-5 border-solid border-blue-900 bg-slate-500 flex flex-col items-center"
+              style={{ width: "500px", height: "650px"}}
             >
-                <div>{book.title}</div>
-                <div>{book.author}</div>
-                <div>{book.isbn_number}</div>
-                <img src={book.cover_image} alt="book cover art" />
-                <div>Categories: {book.categories.map((category) => category.name).join(', ')}</div>
+              <div>
+                <NavLink className="flex text-2xl text-center hover:text-blue-700">
+                  {book.title}
+                </NavLink>
+              </div>
+              <div className="m-2">Author: {book.author}</div>
+              <div className="m-2">ISBN Number: {book.isbn_number}</div>
+              <div className="m-2">
+                Categories:{" "}
+                {book.categories.map((category) => category.name).join(", ")}
+              </div>
+              <img
+                src={book.cover_image}
+                alt="book cover art"
+                width="250"
+                height="400"
+              />
             </div>
-        ))
+          ))}
+        </div>
+      );
     }
-  }
+  };
 
   return (
-    <>
-    <h1 className="text-4xl text-bold">Book List</h1>
-    {displayBooks()}
-    </>
-  )
+    <div className="flex flex-col">
+      <h1 className="text-4xl text-bold text-blue-600 flex self-center">Book List</h1>
+      {displayBooks()}
+    </div>
+  );
 };
