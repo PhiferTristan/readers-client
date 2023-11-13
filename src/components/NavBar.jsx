@@ -12,7 +12,7 @@ export const NavBar = () => {
                 <NavLink className="text-left underline text-blue-600 hover:text-purple-700" to={"/books"}>Books</NavLink>
             </li>
             <li className="navbar__item">
-                <NavLink className="text-left underline text-blue-600 hover:text-purple-700" to={"/create"}>Create a book</NavLink>
+                <NavLink className="text-left underline text-blue-600 hover:text-purple-700" to={"/createbook"}>Create a book</NavLink>
             </li>
             {
                 (localStorage.getItem("reader_token") !== null) ?
