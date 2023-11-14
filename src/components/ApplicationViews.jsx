@@ -48,7 +48,7 @@ export default function ApplicationViews() {
               }
             />
             <Route path="/books/:bookId" element={<BookReviews />} />
-            <Route path="/books/:bookId/review_form" element={ReviewForm} />
+            <Route path="/books/:bookId/review_form" element={<ReviewForm />} />
             <Route path="/create_book" element={<BookForm />} />
           </Route>
         </Routes>
