@@ -6,18 +6,18 @@ export const NavBar = () => {
     return (
         <ul className="navbar pb-10">
             <li className="navbar__item pl-10">
-                <NavLink className="text-left underline text-blue-600 hover:text-purple-700" to={"/"}>Home</NavLink>
+                <NavLink className="text-left text-2xl underline text-blue-600 hover:text-purple-700" to={"/"}>Home</NavLink>
             </li>
             <li className="navbar__item">
-                <NavLink className="text-left underline text-blue-600 hover:text-purple-700" to={"/books"}>Books</NavLink>
+                <NavLink className="text-left text-2xl underline text-blue-600 hover:text-purple-700" to={"/books"}>Books</NavLink>
             </li>
             <li className="navbar__item">
-                <NavLink className="text-left underline text-blue-600 hover:text-purple-700" to={"/createbook"}>Create a book</NavLink>
+                <NavLink className="text-left text-2xl underline text-blue-600 hover:text-purple-700" to={"/create_book"}>Create a book</NavLink>
             </li>
             {
                 (localStorage.getItem("reader_token") !== null) ?
                     <li className="navbar__item">
-                        <button className="underline text-blue-600 hover:text-purple-700"
+                        <button className="underline text-2xl text-blue-600 hover:text-purple-700"
                             onClick={() => {
                                 localStorage.removeItem("rock_token")
                                 navigate('/login')

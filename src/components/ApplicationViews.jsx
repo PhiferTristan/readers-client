@@ -6,6 +6,7 @@ import { Authorized } from "./Authorized";
 import { useState } from "react";
 import { BooksList } from "./BooksList";
 import { BookForm } from "./BookForm";
+import { BookReviews } from "./BookReviews";
 
 export default function ApplicationViews() {
   const [booksState, setBooksState] = useState([]);
@@ -29,24 +30,27 @@ export default function ApplicationViews() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route element={<Authorized />}>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/books"
-            element={
-              <BooksList
-                books={booksState}
-                fetchBooks={fetchBooksFromAPI}
-                showAll={true}
-              />
-            }
-          />
-          <Route path="/createbook" element={<BookForm />} />
-        </Route>
-      </Routes>
+      <div className="bg-gradient-to-b from-gray-800">
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route element={<Authorized />}>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/books"
+              element={
+                <BooksList
+                  books={booksState}
+                  fetchBooks={fetchBooksFromAPI}
+                  showAll={true}
+                />
+              }
+            />
+            <Route path="/books/:bookId" element={<BookReviews />} />
+            <Route path="/create_book" element={<BookForm />} />
+          </Route>
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }
