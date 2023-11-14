@@ -7,6 +7,7 @@ import { useState } from "react";
 import { BooksList } from "./BooksList";
 import { BookForm } from "./BookForm";
 import { BookReviews } from "./BookReviews";
+import { ReviewForm } from "./ReviewForm";
 
 export default function ApplicationViews() {
   const [booksState, setBooksState] = useState([]);
@@ -47,6 +48,7 @@ export default function ApplicationViews() {
               }
             />
             <Route path="/books/:bookId" element={<BookReviews />} />
+            <Route path="/books/:bookId/review_form" element={ReviewForm} />
             <Route path="/create_book" element={<BookForm />} />
           </Route>
         </Routes>
