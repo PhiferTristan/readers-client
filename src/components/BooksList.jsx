@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const BooksList = ({ books, fetchBooks, showAll }) => {
   useEffect(() => {
@@ -14,12 +14,15 @@ export const BooksList = ({ books, fetchBooks, showAll }) => {
             <div
               key={`key-${book.id}`}
               className="border p-10 m-5 border-solid border-blue-900 bg-slate-500 flex flex-col items-center"
-              style={{ width: "500px", height: "650px"}}
+              style={{ width: "500px", height: "650px" }}
             >
               <div>
-                <NavLink className="flex text-2xl text-center hover:text-blue-700">
+                <Link
+                  className="flex text-2xl text-center hover:text-blue-700"
+                  to={`/books/${book.id}`}
+                >
                   {book.title}
-                </NavLink>
+                </Link>
               </div>
               <div className="m-2">Author: {book.author}</div>
               <div className="m-2">ISBN Number: {book.isbn_number}</div>
@@ -42,7 +45,9 @@ export const BooksList = ({ books, fetchBooks, showAll }) => {
 
   return (
     <div className="flex flex-col">
-      <h1 className="text-4xl text-bold text-blue-600 flex self-center">Book List</h1>
+      <h1 className="text-4xl text-bold text-blue-600 flex self-center">
+        Book List
+      </h1>
       {displayBooks()}
     </div>
   );
